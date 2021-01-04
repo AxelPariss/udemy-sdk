@@ -1,9 +1,8 @@
-const CouponsModel = require('./coupons')
 let Coupons
 
 class Courses {
   constructor(axios) {
-    Coupons = new CouponsModel(axios)
+    Coupons = require('./coupons')(axios)
     this.axios = axios
   }
 
