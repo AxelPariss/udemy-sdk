@@ -1,5 +1,9 @@
+const CouponsModel = require('./coupons')
+let Coupons
+
 class Courses {
   constructor(axios) {
+    Coupons = new CouponsModel(axios)
     this.axios = axios
   }
 
@@ -16,6 +20,17 @@ class Courses {
         }
       }
     })
+
+    const couponsPossibilities = []
+    for (let i = 0; i < courses.length; i += 1) {
+      couponsPossibilities.push(Coupons.getCouponsPossibilities(courses[i].id))
+    }
+
+    const allCouponsPossibilities = await Promise.all(couponsPossibilities)
+    for (let i = 0; i < courses.length; i += 1) {
+      courses[i].couponsPossibilities = allCouponsPossibilities[i]
+    }
+
 
     return courses
   }
