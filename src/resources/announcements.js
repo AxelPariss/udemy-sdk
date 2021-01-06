@@ -71,15 +71,16 @@ class Annoucements {
     completionRatio = [0, 49, 99, 100],
     fromDate = '',
     toDate = '',
+    is_promotional = true,
     isPreview = true
   ) {
     const url = `announcement-groups${isPreview ? '?is_preview=1' : ''}`
 
     try {
       const response = await this.axios.post(url, {
-        title: title,
-        content: content,
-        is_promotional: true,
+        title,
+        content,
+        is_promotional,
         data: {
           includes,
           excludes,
