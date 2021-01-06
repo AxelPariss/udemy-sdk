@@ -63,32 +63,32 @@ class Annoucements {
     } catch (e) { }
   }
 
-  async sendPreviewEmail(
+  async send(
     title,
     content,
     includes = [],
     excludes = [],
     completionRatio = [0, 49, 99, 100],
     fromDate = '',
-    toDate = ''
+    toDate = '',
+    isPreview = true
   ) {
     const url = `announcement-groups${isPreview ? '?is_preview=1' : ''}`
-    const json = {
-      title,
-      content,
-      is_promotional: true,
-      data: {
-        includes,
-        excludes,
-        completionRatio,
-        fromDate,
-        toDate,
-      },
-      ignore_warnings: 1,
-    }
 
     try {
-      const response = await axios.post(url, JSON.stringify(json))
+      const response = await this.axios.post(url, {
+        title: title,
+        content: content,
+        is_promotional: true,
+        data: {
+          includes,
+          excludes,
+          completionRatio,
+          fromDate,
+          toDate,
+        },
+        ignore_warnings: 1,
+      })
 
       if (!response.error) {
         return true

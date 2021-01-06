@@ -7,7 +7,7 @@ module.exports = class {
 
     axios.defaults.baseURL = 'https://www.udemy.com/api-2.0/'
     axios.defaults.headers.common['Content-Type'] = 'application/json'
-    axios.defaults.headers.common.Accept = 'application/json'
+    axios.defaults.headers.common.Accept = 'application/json;charset=UTF-8'
     axios.defaults.headers.common['x-udemy-authorization'] = `Bearer ${token}`
     axios.defaults.headers.common.authorization = `Bearer ${token}`
 
