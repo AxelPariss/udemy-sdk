@@ -68,7 +68,7 @@ class Annoucements {
     content,
     includes = [],
     excludes = [],
-    completionRatio = [0, 49, 99, 100],
+    completionRatio = ["0", "49", "99", "100"],
     fromDate = '',
     toDate = '',
     is_promotional = true,
